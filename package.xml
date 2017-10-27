@@ -22,7 +22,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </developer>
- <date>2017-10-20</date>
+ <date>2017-10-27</date>
  <version>
   <release>2.0.9</release>
   <api>2.0.0</api>
@@ -36,6 +36,13 @@
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
+   <dir name="doc">
+    <dir name="Horde">
+     <dir name="Exception">
+      <file name="CHANGES" role="doc" />
+     </dir> <!-- /doc/Horde/Exception -->
+    </dir> <!-- /doc/Horde -->
+   </dir> <!-- /doc -->
    <dir name="lib">
     <dir name="Horde">
      <dir name="Exception">
@@ -351,6 +358,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/Exception/CHANGES" />
    <install as="Horde/Exception.php" name="lib/Horde/Exception.php" />
    <install as="Horde/Exception/LastError.php" name="lib/Horde/Exception/LastError.php" />
    <install as="Horde/Exception/NotFound.php" name="lib/Horde/Exception/NotFound.php" />
@@ -813,7 +821,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-20</date>
+   <date>2017-10-27</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
    </notes>
