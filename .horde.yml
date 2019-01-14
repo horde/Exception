@@ -2,7 +2,7 @@
 id: Exception
 name: Exception
 full: Exception handler library
-description: >
+description: >-
   This class provides the default exception handlers for the Horde Application
   Framework.
 list: dev
