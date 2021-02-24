@@ -40,9 +40,6 @@
     "autoload": {
         "psr-0": {
             "Horde_Exception": "lib/"
-        },
-        "psr-4": {
-            "Horde\\Exception\\": "src/"
         }
     }
 }
