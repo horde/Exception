@@ -38,9 +38,9 @@ license:
   uri: http://www.horde.org/licenses/lgpl21
 dependencies:
   required:
-    php: ^5.3 || ^7
-    pear:
-      pear.horde.org/Horde_Translation: ^2.2
+    php: ^7
+    composer:
+      horde/translation: ^3
   optional:
-    pear:
-      pear.horde.org/Horde_Test: ^2.1
+    composer:
+      horde/test: ^3
