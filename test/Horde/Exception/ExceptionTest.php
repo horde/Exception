@@ -10,7 +10,18 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-
+namespace Horde\Exception;
+use \PHPUnit\Framework\TestCase;
+use \Horde_Exception;
+use \Horde_Exception_NotFound;
+use \Horde_Exception_PermissionDenied;
+use \Horde_Exception_LastError;
+use \Horde_Exception_PearError;
+use \Horde_Exception_Stub_PearError;
+use \Horde_Exception_Wrapped;
+use \Horde_Exception_Pear;
+use \PEAR_Error;
+use \Exception;
 /**
  * Tests for the Horde_Exception class.
  *
@@ -19,7 +30,7 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Exception_ExceptionTest extends  PHPUnit_Framework_TestCase
+class ExceptionTest extends TestCase
 {
 
     // Basic Exception Testing
@@ -45,13 +56,13 @@ class Horde_Exception_ExceptionTest extends  PHPUnit_Framework_TestCase
     public function testMethodTostringYieldsExceptionDescription()
     {
         $e = new Horde_Exception();
-        $this->assertRegexp('/(exception |^)\'?Horde_Exception\'? in/', (string)$e);
+        $this->assertMatchesRegularExpression('/(exception |^)\'?Horde_Exception\'? in/', (string)$e);
     }
 
     public function testMethodTostringContainsDescriptionOfPreviousException()
     {
         $e = new Horde_Exception(null, null, new Exception('previous'));
-        $this->assertRegexp('/Next( exception)? \'?Horde_Exception\'?/', (string)$e);
+        $this->assertMatchesRegularExpression('/Next (exception)? \'?Horde_Exception\'?/', (string)$e);
     }
 
     // NotFound Exception Testing
