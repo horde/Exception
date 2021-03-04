@@ -58,13 +58,18 @@ class ExceptionTest extends TestCase
         $e = new Horde_Exception();
         $this->assertMatchesRegularExpression('/(exception |^)\'?Horde_Exception\'? in/', (string)$e);
     }
-/*
+
+    /**
+     * This test runs against a method of the original PHP \Exception.
+     * Why do we test it here?
+     */
     public function testMethodTostringContainsDescriptionOfPreviousException()
     {
         $e = new Horde_Exception(null, null, new Exception('previous'));
-        $this->assertMatchesRegularExpression('/Next (exception)? \'?Horde_Exception\'?/', (string)$e);
+        $this->assertMatchesRegularExpression('/Next Horde_Exception/', (string)$e);
+        $this->assertMatchesRegularExpression('/Exception: previous/', (string)$e);
     }
-*/
+
     // NotFound Exception Testing
 
     public function testEmptyConstructionYieldsNotFoundMessage()
@@ -145,13 +150,11 @@ class ExceptionTest extends TestCase
         try {
             Horde_Exception_Pear::catchError(new PEAR_Error('An error occurred.'));
         } catch (Horde_Exception_Pear $e) {
-           /* $this->assertStringContainsString(
-                'Horde_Exception_ExceptionTest->testCatchingAndConvertingPearErrors unkown:unkown',
+           $this->assertStringContainsString(
+                'Horde\Exception\ExceptionTest->testCatchingAndConvertingPearErrors',
                 $e->details
-            ); */
+            );
         }
-
-	print_r($e->details);
     }
 
     public function testStringUserinfo()
