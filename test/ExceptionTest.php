@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2009-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2021 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -8,22 +8,23 @@
  * @category Horde
  * @package  Exception
  * @author   Gunnar Wrobel <wrobel@pardus.de>
+ * @author   Ralf Lang <lang@b1-systems.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-namespace Horde\Exception;
+namespace Horde\Exception\Test;
 use \PHPUnit\Framework\TestCase;
-use \Horde_Exception;
-use \Horde_Exception_NotFound;
-use \Horde_Exception_PermissionDenied;
-use \Horde_Exception_LastError;
-use \Horde_Exception_PearError;
+use \Horde\Exception\HordeException;
+use \Horde\Exception\NotFound;
+use \Horde\Exception\PermissionDenied;
+use \Horde\Exception\LastError;
+use \Horde\Exception\PearError;
 use \Horde_Exception_Stub_PearError;
-use \Horde_Exception_Wrapped;
-use \Horde_Exception_Pear;
+use \Horde\Exception\Wrapped;
+use \Horde\Exception\Pear;
 use \PEAR_Error;
 use \Exception;
 /**
- * Tests for the Horde_Exception class.
+ * Tests for the Horde\Exception\ namespaced classes.
  *
  * @category Horde
  * @package  Exception
@@ -37,26 +38,26 @@ class ExceptionTest extends TestCase
 
     public function testEmptyConstructionYieldsEmptyMessage()
     {
-        $e = new Horde_Exception();
+        $e = new HordeException();
         $this->assertSame('', $e->getMessage());
     }
 
     public function testEmptyConstructionYieldsCodeZero()
     {
-        $e = new Horde_Exception();
+        $e = new HordeException();
         $this->assertSame(0, $e->getCode());
     }
 
     public function testMethodGetpreviousYieldsPreviousException()
     {
-        $e = new Horde_Exception(null, null, new Exception('previous'));
+        $e = new HordeException(null, null, new Exception('previous'));
         $this->assertEquals('previous', $e->getPrevious()->getMessage());
     }
 
     public function testMethodTostringYieldsExceptionDescription()
     {
-        $e = new Horde_Exception();
-        $this->assertMatchesRegularExpression('/(exception |^)\'?Horde_Exception\'? in/', (string)$e);
+        $e = new HordeException();
+        $this->assertStringContainsString('Horde\Exception\HordeException', (string)$e);
     }
 
     /**
@@ -65,8 +66,8 @@ class ExceptionTest extends TestCase
      */
     public function testMethodTostringContainsDescriptionOfPreviousException()
     {
-        $e = new Horde_Exception(null, null, new Exception('previous'));
-        $this->assertMatchesRegularExpression('/Next Horde_Exception/', (string)$e);
+        $e = new HordeException(null, null, new Exception('previous'));
+        $this->assertStringContainsString('Next Horde\Exception\HordeException', (string)$e);
         $this->assertMatchesRegularExpression('/Exception: previous/', (string)$e);
     }
 
@@ -75,7 +76,7 @@ class ExceptionTest extends TestCase
     public function testEmptyConstructionYieldsNotFoundMessage()
     {
         setlocale(LC_MESSAGES, 'C');
-        $e = new Horde_Exception_NotFound();
+        $e = new NotFound();
         $this->assertSame('Not Found', $e->getMessage());
     }
 
@@ -84,7 +85,7 @@ class ExceptionTest extends TestCase
     public function testEmptyConstructionYieldsPermissionDeniedMessage()
     {
         setlocale(LC_MESSAGES, 'C');
-        $e = new Horde_Exception_PermissionDenied();
+        $e = new PermissionDenied();
         $this->assertSame('Permission Denied', $e->getMessage());
     }
 
@@ -94,7 +95,7 @@ class ExceptionTest extends TestCase
     {
         require_once __DIR__ . '/Stub/PearError.php';
         $p = new Horde_Exception_Stub_PearError('pear');
-        $e = new Horde_Exception_Wrapped($p);
+        $e = new Wrapped($p);
         $this->assertSame('pear', $e->getMessage());
     }
 
@@ -102,7 +103,7 @@ class ExceptionTest extends TestCase
     {
         require_once __DIR__ . '/Stub/PearError.php';
         $p = new Horde_Exception_Stub_PearError('pear', 666);
-        $e = new Horde_Exception_Wrapped($p);
+        $e = new Wrapped($p);
         $this->assertSame(666, $e->getCode());
     }
 
@@ -110,37 +111,37 @@ class ExceptionTest extends TestCase
 
     public function testConstructionOfLastErrorYieldsStandardException()
     {
-        $e = new Horde_Exception_LastError();
+        $e = new LastError();
         $this->assertSame('', $e->getMessage());
     }
 
     public function testConstructionWithGetlasterrorarrayYieldsMessageFromArray()
     {
-        $e = new Horde_Exception_LastError(null, $this->_getLastError());
+        $e = new LastError(null, $this->_getLastError());
         $this->assertSame('get_last_error', $e->getMessage());
     }
 
     public function testConstructionWithGetlasterrorarrayYieldsCodeFromArray()
     {
-        $e = new Horde_Exception_LastError(null, $this->_getLastError());
+        $e = new LastError(null, $this->_getLastError());
         $this->assertSame(666, $e->getCode());
     }
 
     public function testConstructionWithGetlasterrorarrayYieldsFileFromArray()
     {
-        $e = new Horde_Exception_LastError(null, $this->_getLastError());
+        $e = new LastError(null, $this->_getLastError());
         $this->assertSame('/some/file.php', $e->getFile());
     }
 
     public function testConstructionWithGetlasterrorarrayYieldsLineFromArray()
     {
-        $e = new Horde_Exception_LastError(null, $this->_getLastError());
+        $e = new LastError(null, $this->_getLastError());
         $this->assertSame(99, $e->getLine());
     }
 
     public function testConstructionWithGetlasterrorarrayConcatenatesMessagesFromConstructorAndErrorarray()
     {
-        $e = new Horde_Exception_LastError('An error occurred: ', $this->_getLastError());
+        $e = new LastError('An error occurred: ', $this->_getLastError());
         $this->assertSame('An error occurred: get_last_error', $e->getMessage());
     }
 
@@ -148,10 +149,10 @@ class ExceptionTest extends TestCase
     {
         $this->_loadPear();
         try {
-            Horde_Exception_Pear::catchError(new PEAR_Error('An error occurred.'));
-        } catch (Horde_Exception_Pear $e) {
+            Pear::catchError(new PEAR_Error('An error occurred.'));
+        } catch (Pear $e) {
            $this->assertStringContainsString(
-                'Horde\Exception\ExceptionTest->testCatchingAndConvertingPearErrors',
+                'Horde\Exception\Test\ExceptionTest->testCatchingAndConvertingPearErrors',
                 $e->details
             );
         }
@@ -161,10 +162,10 @@ class ExceptionTest extends TestCase
     {
         $this->_loadPear();
         try {
-            Horde_Exception_Pear::catchError(
+            Pear::catchError(
                 new PEAR_Error('An error occurred.', null, null, null, 'userinfo')
             );
-        } catch (Horde_Exception_Pear $e) {
+        } catch (Pear $e) {
             $this->assertStringContainsString('userinfo', $e->details);
         }
     }
@@ -173,10 +174,10 @@ class ExceptionTest extends TestCase
     {
         $this->_loadPear();
         try {
-            Horde_Exception_Pear::catchError(
+            Pear::catchError(
                 new PEAR_Error('An error occurred.', null, null, null, array('userinfo'))
             );
-        } catch (Horde_Exception_Pear $e) {
+        } catch (Pear $e) {
             $this->assertStringContainsString('[0] => userinfo', $e->details);
         }
     }

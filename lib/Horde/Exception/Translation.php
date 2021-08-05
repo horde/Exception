@@ -10,7 +10,7 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL
  * @package  Exception
  */
-
+use Horde\Exception\Translation as HordeExceptionTranslation;
 /**
  * Horde_Exception_Translation is the translation wrapper class for Horde_Exception.
  *
@@ -20,19 +20,6 @@
  * @license   http://www.horde.org/licenses/lgpl21 LGPL
  * @package   Exception
  */
-class Horde_Exception_Translation extends Horde_Translation_Autodetect
+class Horde_Exception_Translation extends HordeExceptionTranslation
 {
-    /**
-     * The translation domain
-     *
-     * @var string
-     */
-    protected static $_domain = 'Horde_Exception';
-
-    /**
-     * The absolute PEAR path to the translations for the default gettext handler.
-     *
-     * @var string
-     */
-    protected static $_pearDirectory = '@data_dir@';
 }
