@@ -38,7 +38,7 @@ class PermissionDenied extends HordeException
      */
     public function __construct($message = '', $code = 0, Throwable $previous = null)
     {
-        if (is_null($message)) {
+        if ($message === '') {
             $message = Translation::t("Permission Denied");
         }
         parent::__construct($message, $code, $previous);
