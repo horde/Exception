@@ -10,7 +10,9 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
  */
+
 namespace Horde\Exception;
+
 /**
  * Horde exception class that accepts output of error_get_last() as $code and
  * mask itself as that error.
@@ -51,5 +53,4 @@ class LastError extends HordeException
             parent::__construct($message, $code_or_lasterror);
         }
     }
-
 }

@@ -10,8 +10,11 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
  */
+
 namespace Horde\Exception;
-use \Exception;
+
+use Exception;
+
 /**
  * Horde base exception class.
  *
@@ -21,7 +24,7 @@ use \Exception;
  * @license   http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package   Exception
  */
-class HordeException extends Exception
+class HordeException extends Exception implements FrameworkException
 {
     /**
      * Error details that should not be part of the main exception message,
@@ -60,7 +63,7 @@ class HordeException extends Exception
      *
      * @param mixed $level  The log level.
      */
-    public function setLogLevel($level = 0)
+    public function setLogLevel($level = 0): void
     {
         if (is_string($level)) {
             $level = defined('Horde_Log::' . $level)
@@ -70,5 +73,4 @@ class HordeException extends Exception
 
         $this->_logLevel = $level;
     }
-
 }
