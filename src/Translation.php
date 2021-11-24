@@ -13,7 +13,7 @@
 
 namespace Horde\Exception;
 
-use Horde_Translation_Autodetect as TranslationAutodetect;
+use Horde\Translation\Autodetect;
 
 /**
  * Horde_Exception_Translation is the translation wrapper class for Horde_Exception.
@@ -24,19 +24,19 @@ use Horde_Translation_Autodetect as TranslationAutodetect;
  * @license   http://www.horde.org/licenses/lgpl21 LGPL
  * @package   Exception
  */
-class Translation extends TranslationAutodetect
+class Translation extends Autodetect
 {
     /**
      * The translation domain
      *
      * @var string
      */
-    protected static $_domain = 'Horde_Exception';
+    protected static $domain = 'Horde_Exception';
 
     /**
      * The absolute PEAR path to the translations for the default gettext handler.
      *
      * @var string
      */
-    protected static $_pearDirectory = '@data_dir@';
+    protected static $pearDirectory = '@data_dir@';
 }
