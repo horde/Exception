@@ -10,7 +10,11 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
  */
+
 namespace Horde\Exception;
+
+use Throwable;
+
 /**
  * Exception thrown if any access without sufficient permissions occured.
  *
@@ -30,12 +34,13 @@ class PermissionDenied extends HordeException
      * @param mixed $message           The exception message, a PEAR_Error
      *                                 object, or an Exception object.
      * @param integer $code            A numeric error code.
+     * @param Throwable $previous   A previous Throwable
      */
-    public function __construct($message = null, $code = null)
+    public function __construct($message = '', $code = 0, Throwable $previous = null)
     {
         if (is_null($message)) {
             $message = Translation::t("Permission Denied");
         }
-        parent::__construct($message, $code);
+        parent::__construct($message, $code, $previous);
     }
 }

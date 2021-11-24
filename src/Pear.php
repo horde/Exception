@@ -10,8 +10,11 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
  */
+
 namespace Horde\Exception;
-use \PEAR_Error;
+
+use PEAR_Error;
+
 /**
  * Horde exception class that converts PEAR errors to exceptions.
  *
@@ -56,11 +59,11 @@ class Pear extends HordeException
             $pear_error .= 'PEAR backtrace:' . "\n\n";
             foreach ($backtrace as $frame) {
                 $pear_error .=
-                      (isset($frame['class']) ? $frame['class'] : '')
-                    . (isset($frame['type']) ? $frame['type'] : '')
-                    . (isset($frame['function']) ? $frame['function'] : 'unkown') . ' '
-                    . (isset($frame['file']) ? $frame['file'] : 'unkown') . ':'
-                    . (isset($frame['line']) ? $frame['line'] : 'unkown') . "\n";
+                      ($frame['class'] ?? '')
+                    . ($frame['type'] ?? '')
+                    . ($frame['function'] ?? 'unkown') . ' '
+                    . ($frame['file'] ?? 'unkown') . ':'
+                    . ($frame['line'] ?? 'unkown') . "\n";
             }
         }
         $userinfo = $error->getUserInfo();
@@ -68,6 +71,9 @@ class Pear extends HordeException
             $pear_error .= "\n" . 'PEAR user info:' . "\n\n";
             if (is_string($userinfo)) {
                 $pear_error .= $userinfo;
+            // PEAR_Error is pretty legacy
+                // The phpdoc annotation cannot be fully trusted
+                // @phpstan-ignore-next-line
             } else {
                 $pear_error .= print_r($userinfo, true);
             }

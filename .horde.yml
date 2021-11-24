@@ -28,7 +28,7 @@ authors:
     active: false
     role: developer
 version:
-  release: 3.0.0alpha5
+  release: 3.0.0alpha4
   api: 3.0.0alpha1
 state:
   release: alpha
@@ -41,6 +41,8 @@ dependencies:
     php: ^7 || ^8
     composer:
       horde/translation: ^3
-  optional:
+  dev:
     composer:
       horde/test: ^3
+      pear/pear: '*'
+      pear/console_getopt: ^1.4.4|dev-master

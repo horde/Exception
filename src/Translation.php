@@ -10,8 +10,11 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
  */
+
 namespace Horde\Exception;
+
 use Horde_Translation_Autodetect as TranslationAutodetect;
+
 /**
  * Horde_Exception_Translation is the translation wrapper class for Horde_Exception.
  *

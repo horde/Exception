@@ -10,7 +10,11 @@
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
  */
+
 namespace Horde\Exception;
+
+use Throwable;
+
 /**
  * Exception thrown if an object wasn't found.
  *
@@ -29,13 +33,14 @@ class NotFound extends HordeException
      *
      * @param mixed $message           The exception message, a PEAR_Error
      *                                 object, or an Exception object.
-     * @param integer $code            A numeric error code.
+     * @param int   $code              A numeric error code.
+     * @param Throwable $previous      A previous exception or error
      */
-    public function __construct($message = null, $code = null)
+    public function __construct($message = '', int $code = 0, ?Throwable $previous = null)
     {
         if (is_null($message)) {
             $message = Translation::t("Not Found");
         }
-        parent::__construct($message, $code);
+        parent::__construct($message, $code, $previous);
     }
 }

@@ -1,5 +1,4 @@
 {
-    "minimum-stability": "dev",
     "name": "horde/exception",
     "description": "Exception handler library",
     "type": "library",
@@ -22,7 +21,7 @@
             "role": "developer"
         }
     ],
-    "time": "2021-08-05",
+    "time": "2021-11-24",
     "repositories": [
         {
             "type": "composer",
@@ -33,10 +32,12 @@
         "php": "^7 || ^8",
         "horde/translation": "^3 || dev-FRAMEWORK_6_0"
     },
-    "require-dev": {},
-    "suggest": {
-        "horde/test": "^3 || dev-FRAMEWORK_6_0"
+    "require-dev": {
+        "horde/test": "^3 || dev-FRAMEWORK_6_0",
+        "pear/pear": "*",
+        "pear/console_getopt": "^1.4.4|dev-master"
     },
+    "suggest": {},
     "autoload": {
         "psr-0": {
             "Horde_Exception": "lib/"
@@ -49,5 +50,6 @@
         "psr-4": {
             "Horde\\Exception\\Test\\": "test/"
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
