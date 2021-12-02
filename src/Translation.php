@@ -31,12 +31,12 @@ class Translation extends Autodetect
      *
      * @var string
      */
-    protected static $domain = 'Horde_Exception';
+    protected static string $domain = 'Horde_Exception';
 
     /**
      * The absolute PEAR path to the translations for the default gettext handler.
      *
      * @var string
      */
-    protected static $pearDirectory = '@data_dir@';
+    protected static string $pearDirectory = '@data_dir@';
 }
