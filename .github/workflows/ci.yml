@@ -28,7 +28,7 @@ jobs:
       matrix:
         operating-system: ['ubuntu-20.04']
         php-versions: ['7.4', '8.0', 'latest']
-        phpunit-versions: ['latest', '9.5', '9.0']
+        phpunit-versions: ['latest', '9.5']
     steps:
     - name: Setup Locales
       run:  sudo locale-gen en_US en_US.UTF-8; sudo dpkg-reconfigure locales 
