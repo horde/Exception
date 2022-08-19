@@ -13,10 +13,14 @@
 
 namespace Horde\Exception;
 
+use Exception;
+use PEAR_Error;
 use Throwable;
 
 /**
  * Exception thrown if any access without sufficient permissions occured.
+ *
+ * Consuming code should check against the PermissionDeniedThrowable, not this class
  *
  * @author    Jan Schneider <jan@horde.org>
  * @category  Horde
@@ -24,14 +28,14 @@ use Throwable;
  * @license   http://www.horde.org/licenses/lgpl21 LGPL
  * @package   Exception
  */
-class PermissionDenied extends HordeException
+class PermissionDenied extends HordeException implements PermissionDeniedThrowable
 {
     /**
      * Constructor.
      *
      * @see Horde_Exception::__construct()
      *
-     * @param mixed $message           The exception message, a PEAR_Error
+     * @param string|PEAR_Error|Exception $message           The exception message, a PEAR_Error
      *                                 object, or an Exception object.
      * @param integer $code            A numeric error code.
      * @param Throwable $previous   A previous Throwable
@@ -40,6 +44,8 @@ class PermissionDenied extends HordeException
     {
         if ($message === '') {
             $message = Translation::t("Permission Denied");
+        }
+        if ($message instanceof Exception) {
         }
         parent::__construct($message, $code, $previous);
     }

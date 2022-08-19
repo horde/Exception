@@ -18,6 +18,12 @@ use PEAR_Error;
 /**
  * Horde exception class that converts PEAR errors to exceptions.
  *
+ * This class is strictly legacy support for schematic conversions.
+ * It should NOT be used even for new code that happens to interface with PEAR_Error.
+ *
+ * Implementation using a custom constructor is dubious.
+ * Instead, use a trait that actually unpacks a PEAR_Error into the regular exception constructor.
+ *
  * @author    Jan Schneider <jan@horde.org>
  * @category  Horde
  * @copyright 2008-2021 Horde LLC
@@ -93,6 +99,7 @@ class Pear extends HordeException
     public static function catchError($result)
     {
         if ($result instanceof PEAR_Error) {
+            //@phpstan-ignore-next-line
             throw new self::$_class($result);
         }
         return $result;
