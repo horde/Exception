@@ -11,18 +11,21 @@
  * @author   Ralf Lang <lang@b1-systems.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
+
 namespace Horde\Exception\Test;
-use \PHPUnit\Framework\TestCase;
-use \Horde\Exception\HordeException;
-use \Horde\Exception\NotFound;
-use \Horde\Exception\PermissionDenied;
-use \Horde\Exception\LastError;
-use \Horde\Exception\PearError;
-use \Horde_Exception_Stub_PearError;
-use \Horde\Exception\Wrapped;
-use \Horde\Exception\Pear;
-use \PEAR_Error;
-use \Exception;
+
+use Exception;
+use Horde\Exception\HordeException;
+use Horde\Exception\LastError;
+use Horde\Exception\NotFound;
+use Horde\Exception\Pear;
+use Horde\Exception\PearError;
+use Horde\Exception\PermissionDenied;
+use Horde\Exception\Wrapped;
+use Horde_Exception_Stub_PearError;
+use PEAR_Error;
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests for the Horde\Exception\ namespaced classes.
  *
@@ -33,7 +36,6 @@ use \Exception;
  */
 class ExceptionTest extends TestCase
 {
-
     // Basic Exception Testing
 
     public function testEmptyConstructionYieldsEmptyMessage()
@@ -151,7 +153,7 @@ class ExceptionTest extends TestCase
         try {
             Pear::catchError(new PEAR_Error('An error occurred.'));
         } catch (Pear $e) {
-           $this->assertStringContainsString(
+            $this->assertStringContainsString(
                 'Horde\Exception\Test\ExceptionTest->testCatchingAndConvertingPearErrors',
                 $e->details
             );
@@ -175,7 +177,7 @@ class ExceptionTest extends TestCase
         $this->_loadPear();
         try {
             Pear::catchError(
-                new PEAR_Error('An error occurred.', null, null, null, array('userinfo'))
+                new PEAR_Error('An error occurred.', null, null, null, ['userinfo'])
             );
         } catch (Pear $e) {
             $this->assertStringContainsString('[0] => userinfo', $e->details);
@@ -184,12 +186,12 @@ class ExceptionTest extends TestCase
 
     private function _getLastError()
     {
-        return array(
+        return [
             'message' => 'get_last_error',
             'type'    => 666,
             'file'    => '/some/file.php',
-            'line'    => 99
-        );
+            'line'    => 99,
+        ];
     }
 
     private function _loadPear()

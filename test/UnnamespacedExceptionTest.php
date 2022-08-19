@@ -10,18 +10,21 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
+
 namespace Horde\Exception\Test;
-use \PHPUnit\Framework\TestCase;
-use \Horde_Exception;
-use \Horde_Exception_NotFound;
-use \Horde_Exception_PermissionDenied;
-use \Horde_Exception_LastError;
-use \Horde_Exception_PearError;
-use \Horde_Exception_Stub_PearError;
-use \Horde_Exception_Wrapped;
-use \Horde_Exception_Pear;
-use \PEAR_Error;
-use \Exception;
+
+use Exception;
+use Horde_Exception;
+use Horde_Exception_LastError;
+use Horde_Exception_NotFound;
+use Horde_Exception_Pear;
+use Horde_Exception_PearError;
+use Horde_Exception_PermissionDenied;
+use Horde_Exception_Stub_PearError;
+use Horde_Exception_Wrapped;
+use PEAR_Error;
+use PHPUnit\Framework\TestCase;
+
 /**
  * Tests for the unnamespaced Horde_Exception class.
  *
@@ -32,7 +35,6 @@ use \Exception;
  */
 class UnnamespacedExceptionTest extends TestCase
 {
-
     // Basic Exception Testing
 
     public function testEmptyConstructionYieldsEmptyMessage()
@@ -150,7 +152,7 @@ class UnnamespacedExceptionTest extends TestCase
         try {
             Horde_Exception_Pear::catchError(new PEAR_Error('An error occurred.'));
         } catch (Horde_Exception_Pear $e) {
-           $this->assertStringContainsString(
+            $this->assertStringContainsString(
                 'Horde\Exception\Test\UnnamespacedExceptionTest->testCatchingAndConvertingPearErrors',
                 $e->details
             );
@@ -174,7 +176,7 @@ class UnnamespacedExceptionTest extends TestCase
         $this->_loadPear();
         try {
             Horde_Exception_Pear::catchError(
-                new PEAR_Error('An error occurred.', null, null, null, array('userinfo'))
+                new PEAR_Error('An error occurred.', null, null, null, ['userinfo'])
             );
         } catch (Horde_Exception_Pear $e) {
             $this->assertStringContainsString('[0] => userinfo', $e->details);
@@ -183,12 +185,12 @@ class UnnamespacedExceptionTest extends TestCase
 
     private function _getLastError()
     {
-        return array(
+        return [
             'message' => 'get_last_error',
             'type'    => 666,
             'file'    => '/some/file.php',
-            'line'    => 99
-        );
+            'line'    => 99,
+        ];
     }
 
     private function _loadPear()
