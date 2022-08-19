@@ -72,8 +72,8 @@ class Pear extends HordeException
             if (is_string($userinfo)) {
                 $pear_error .= $userinfo;
             // PEAR_Error is pretty legacy
-                // The phpdoc annotation cannot be fully trusted
-                // @phpstan-ignore-next-line
+            // The phpdoc annotation cannot be fully trusted
+            // @phpstan-ignore-next-line
             } else {
                 $pear_error .= print_r($userinfo, true);
             }

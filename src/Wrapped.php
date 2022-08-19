@@ -14,8 +14,8 @@
 namespace Horde\Exception;
 
 use Exception;
-use Throwable;
 use PEAR_Error;
+use Throwable;
 
 /**
  * Horde exception class that can wrap and set its details from PEAR_Error,
