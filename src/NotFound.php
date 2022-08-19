@@ -31,12 +31,11 @@ class NotFound extends HordeException
      *
      * @see Horde_Exception::__construct()
      *
-     * @param mixed $message           The exception message, a PEAR_Error
-     *                                 object, or an Exception object.
+     * @param string $message           The exception message
      * @param int   $code              A numeric error code.
      * @param Throwable $previous      A previous exception or error
      */
-    public function __construct($message = '', int $code = 0, ?Throwable $previous = null)
+    public function __construct(string $message = '', int $code = 0, ?Throwable $previous = null)
     {
         if ($message === '') {
             $message = Translation::t("Not Found");
