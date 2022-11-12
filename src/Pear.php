@@ -79,7 +79,6 @@ class Pear extends HordeException
                 $pear_error .= $userinfo;
             // PEAR_Error is pretty legacy
             // The phpdoc annotation cannot be fully trusted
-            // @phpstan-ignore-next-line
             } else {
                 $pear_error .= print_r($userinfo, true);
             }
@@ -99,7 +98,6 @@ class Pear extends HordeException
     public static function catchError($result)
     {
         if ($result instanceof PEAR_Error) {
-            //@phpstan-ignore-next-line
             throw new self::$_class($result);
         }
         return $result;
