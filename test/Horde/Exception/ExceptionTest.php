@@ -19,7 +19,7 @@
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
-class Horde_Exception_ExceptionTest extends  PHPUnit_Framework_TestCase
+class Horde_Exception_ExceptionTest extends Horde_Test_Case
 {
 
     // Basic Exception Testing
@@ -134,8 +134,8 @@ class Horde_Exception_ExceptionTest extends  PHPUnit_Framework_TestCase
         try {
             Horde_Exception_Pear::catchError(new PEAR_Error('An error occurred.'));
         } catch (Horde_Exception_Pear $e) {
-            $this->assertContains(
-                'Horde_Exception_ExceptionTest->testCatchingAndConvertingPearErrors unkown:unkown',
+            $this->assertStringContainsString(
+                'Horde_Exception_ExceptionTest->testCatchingAndConvertingPearErrors ',
                 $e->details
             );
         }
@@ -149,7 +149,7 @@ class Horde_Exception_ExceptionTest extends  PHPUnit_Framework_TestCase
                 new PEAR_Error('An error occurred.', null, null, null, 'userinfo')
             );
         } catch (Horde_Exception_Pear $e) {
-            $this->assertContains('userinfo', $e->details);
+            $this->assertStringContainsString('userinfo', $e->details);
         }
     }
 
@@ -161,7 +161,7 @@ class Horde_Exception_ExceptionTest extends  PHPUnit_Framework_TestCase
                 new PEAR_Error('An error occurred.', null, null, null, array('userinfo'))
             );
         } catch (Horde_Exception_Pear $e) {
-            $this->assertContains('[0] => userinfo', $e->details);
+            $this->assertStringContainsString('[0] => userinfo', $e->details);
         }
     }
 
