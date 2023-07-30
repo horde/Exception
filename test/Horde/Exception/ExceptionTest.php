@@ -45,13 +45,13 @@ class Horde_Exception_ExceptionTest extends Horde_Test_Case
     public function testMethodTostringYieldsExceptionDescription()
     {
         $e = new Horde_Exception();
-        $this->assertRegexp('/(exception |^)\'?Horde_Exception\'? in/', (string)$e);
+        $this->assertMatchesRegularExpression('/(exception |^)\'?Horde_Exception\'? in/', (string)$e);
     }
 
     public function testMethodTostringContainsDescriptionOfPreviousException()
     {
         $e = new Horde_Exception("", 0, new Exception('previous'));
-        $this->assertRegexp('/Next( exception)? \'?Horde_Exception\'?/', (string)$e);
+        $this->assertMatchesRegularExpression('/Next( exception)? \'?Horde_Exception\'?/', (string)$e);
     }
 
     // NotFound Exception Testing
