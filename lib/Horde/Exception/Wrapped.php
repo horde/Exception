@@ -51,6 +51,6 @@ class Horde_Exception_Wrapped extends Horde_Exception
             $message = (string)$message->getMessage();
         }
 
-        parent::__construct($message, $code, $previous);
+        parent::__construct(is_null($message) ? "" : $message, $code, $previous);
     }
 }

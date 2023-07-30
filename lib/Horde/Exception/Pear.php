@@ -36,7 +36,9 @@ class Horde_Exception_Pear extends Horde_Exception
      */
     public function __construct(PEAR_Error $error)
     {
-        parent::__construct($error->getMessage(), $error->getCode());
+        $message = $error->getMessage();
+        $code = $error->getCode();
+        parent::__construct(is_null($message) ? "" : $message, is_null($code) ? 0 : $code);
         $this->details = $this->_getPearTrace($error);
     }
 

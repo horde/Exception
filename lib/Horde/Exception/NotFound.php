@@ -36,6 +36,6 @@ class Horde_Exception_NotFound extends Horde_Exception
         if (is_null($message)) {
             $message = Horde_Exception_Translation::t("Not Found");
         }
-        parent::__construct($message, $code);
+        parent::__construct($message, is_null($code) ? 0 : $code);
     }
 }
