@@ -44,5 +44,3 @@ dependencies:
   dev:
     composer:
       horde/test: ^3
-      pear/pear: '*'
-      pear/console_getopt: ^1.4.4|dev-master

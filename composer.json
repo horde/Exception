@@ -33,9 +33,7 @@
         "horde/translation": "^3 || dev-FRAMEWORK_6_0"
     },
     "require-dev": {
-        "horde/test": "^3 || dev-FRAMEWORK_6_0",
-        "pear/pear": "*",
-        "pear/console_getopt": "^1.4.4|dev-master"
+        "horde/test": "^3 || dev-FRAMEWORK_6_0"
     },
     "suggest": {},
     "autoload": {
@@ -44,7 +42,10 @@
         },
         "psr-4": {
             "Horde\\Exception\\": "src/"
-        }
+        },
+        "files": [
+            "lib/Horde/Exception/PearErrorGlobal.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
