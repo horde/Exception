@@ -21,13 +21,8 @@
             "role": "developer"
         }
     ],
-    "time": "2022-11-11",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://horde-satis.maintaina.com/"
-        }
-    ],
+    "time": "2026-03-15",
+    "repositories": [],
     "require": {
         "php": "^7.4 || ^8",
         "horde/translation": "^3 || dev-FRAMEWORK_6_0"
@@ -42,15 +37,19 @@
         },
         "psr-4": {
             "Horde\\Exception\\": "src/"
-        },
-        "files": [
-            "lib/Horde/Exception/PearErrorGlobal.php"
-        ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
             "Horde\\Exception\\Test\\": "test/"
         }
     },
-    "minimum-stability": "dev"
+    "config": {
+        "allow-plugins": {}
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-FRAMEWORK_6_0": "3.x-dev"
+        }
+    }
 }

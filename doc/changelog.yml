@@ -9,7 +9,6 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |+
-    
 3.0.0alpha4:
   api: 3.0.0alpha1
   state:
@@ -50,6 +49,93 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: ~
+3.0.0-alpha5:
+  api: 3.0.0-alpha5
+  state:
+    release: alpha
+    api: alpha
+  date: 2026-03-15
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    Merge pull request #4 from horde/feat/pear-error-shim
+    feat: Drop pear support, provide a standin PEAR_Error
+    Fix PHPStan issue
+    Update workflows for Horde Upstream
+    Improve gitignore
+    Factor out implementations, encourage move away from public variables
+    cs
+    Update metadata and workflows for PHP 8 support
+    HNamespaced Horde Translation needs explicit string types
+    Depend on src/ translation for src/ code
+    Fix locales issue in ubuntu 20.04 runner
+    Fix empty-string expansion
+    Ready for phpstan level 8
+    Development mode for Exception-3.0.0alpha6
+    Released Exception-3.0.0alpha4
+    Simplify Unit Testing (may break due to dependencies not PHP 8 ready)
+    Add CI job for satis repo update
+    Update phpdoc.yml
+    ci.yml added, bootstrap adjusted
+    no errors, corrected bootstrap.php
+    no errors left, ci.yml added
+    adjusted bootstrap.php
+    Development mode for Exception-3.0.0alpha5
+    Released Exception-3.0.0alpha3
+    Fixup remaining tests.
+    2 errors left
+    adapted test case to php version 9.x
+    Development mode for Exception-3.0.0alpha4
+    Released Exception-3.0.0alpha2
+    Development mode for Exception-3.0.0alpha3
+    Released Exception-3.0.0alpha1
+    Components updated the package files.
+    Merge pull request #1 from maintaina-com/backport-php8.1-fix
+    Ensure LastError exception only passes integers
+    Update supported PHP versions and configuration names.
+    Standardize descriptions.
+    Add chomp character.
+    Enable PHP 7.3 CI.
+    Update package definitions.
+    Fix getting exit code on PHP 7.2+.
+    Mark Chuck and Michael as inactive.
+    Add missing authors.
+    package.xml must not contain empty <notes> tags.
+    Create CHANGES for all components.
+    Regenerate package.xml from changelog.yml.
+    Build changelog.yml from existing changelog(s).
+    Update .horde.yml with extended information.
+    Update composer.json.
+    Enable 7.2 builds.
+    PEAR on 5.6 and 7.0 is fixed.
+    Update file list
+    Move phpunit configuration to base directory.
+    Update references to COPYING files.
+    Use LICENSE consistently and move to base directory.
+    Stop flooding #horde channel.
+    Use https URLs.
+    Remove incorrect links.
+    Horde_Exception is already installed as a Horde_Test dep.
+    Install all dependencies but PECL extensions.
+    Hopefully this finally fixes Travis builds now.
+    Always discover channel manually, due to Travis bug.
+    Fix Travis tests.
+    Add Travis configuration and .gitignore files.
+    Updated
+    Update de translation.
+    Update Turkish translations.
+    Update tr translation.
+    Add type parameter to .horde.yml files.
+    Update composer information.
+    Updated composer definitions.
+    More phpdoc fixes.
+    Rename horde.yml files.
+    Standardize library full names.
+    Generate horde.yml files for all components.
+    Happy New Year!
+    Use HTTPS.
+    Development mode for Horde_Exception-2.0.9
 2.0.8:
   api: 2.0.0
   state:
@@ -140,17 +226,6 @@
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
     [jan] Update Dutch translation (Arjen de Korte <build+horde@de-korte.org>).
-2.0.0:
-  api: 2.0.0
-  state:
-    release: stable
-    api: stable
-  date: 2012-10-30
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    First stable release for Horde 5.
 2.0.0beta1:
   api: 2.0.0beta1
   state:
@@ -175,6 +250,17 @@
     First alpha release for Horde 5.
     [mms] Added log level setting to Horde_Exception.
     [mms] Added $logged property to Horde_Exception class.
+2.0.0:
+  api: 2.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2012-10-30
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    First stable release for Horde 5.
 1.0.10:
   api: 1.0.0
   state:
@@ -285,39 +371,6 @@
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
     [jan] Updated Spanish translation.
-1.0.0:
-  api: 1.0.0
-  state:
-    release: stable
-    api: stable
-  date: 2011-04-06
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    First stable release for Horde 4.
-1.0.0RC2:
-  api: 1.0.0
-  state:
-    release: beta
-    api: beta
-  date: 2011-03-29
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    Second release candidate for Horde 4.
-1.0.0RC1:
-  api: 1.0.0
-  state:
-    release: beta
-    api: beta
-  date: 2011-03-22
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    First release candidate for Horde 4.
 1.0.0beta1:
   api: 1.0.0
   state:
@@ -340,3 +393,36 @@
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
     First alpha release for Horde 4.
+1.0.0RC2:
+  api: 1.0.0
+  state:
+    release: beta
+    api: beta
+  date: 2011-03-29
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    Second release candidate for Horde 4.
+1.0.0RC1:
+  api: 1.0.0
+  state:
+    release: beta
+    api: beta
+  date: 2011-03-22
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    First release candidate for Horde 4.
+1.0.0:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2011-04-06
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    First stable release for Horde 4.
