@@ -49,6 +49,17 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: ~
+3.0.0-beta1:
+  api: 3.0.0-beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-03-17
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    fix: Refactor PEAR shim for Pear::raise*, Pear_Exception and PEAR_Error for proper autoloading.
 3.0.0-alpha5:
   api: 3.0.0-alpha5
   state:

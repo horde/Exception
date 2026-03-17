@@ -28,10 +28,10 @@ authors:
     active: false
     role: developer
 version:
-  release: 3.0.0-alpha5
+  release: 3.0.0-beta1
   api: 3.0.0alpha1
 state:
-  release: alpha
+  release: beta
   api: alpha
 license:
   identifier: LGPL-2.1-only
@@ -47,7 +47,7 @@ dependencies:
 autoload:
   psr-0:
     Horde_Exception: lib/
-    "": compat/
+    0: compat/
   psr-4:
     Horde\Exception\: src/
 vendor: horde

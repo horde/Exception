@@ -21,7 +21,7 @@
             "role": "developer"
         }
     ],
-    "time": "2026-03-15",
+    "time": "2026-03-17",
     "repositories": [],
     "require": {
         "php": "^7.4 || ^8",
@@ -33,7 +33,8 @@
     "suggest": {},
     "autoload": {
         "psr-0": {
-            "Horde_Exception": "lib/"
+            "Horde_Exception": "lib/",
+            "": "compat/"
         },
         "psr-4": {
             "Horde\\Exception\\": "src/"
