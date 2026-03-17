@@ -44,4 +44,10 @@ dependencies:
   dev:
     composer:
       horde/test: ^3
+autoload:
+  psr-0:
+    Horde_Exception: lib/
+    "": compat/
+  psr-4:
+    Horde\Exception\: src/
 vendor: horde
