@@ -37,7 +37,10 @@
         },
         "psr-4": {
             "Horde\\Exception\\": "src/"
-        }
+        },
+        "classmap": [
+            "compat/"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
