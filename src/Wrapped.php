@@ -43,7 +43,7 @@ class Wrapped extends HordeException
      *
      * @param Throwable $previous   A previous Throwable
      */
-    public function __construct($message = '', $code = 0, Throwable $previous = null)
+    public function __construct($message = '', $code = 0, ?Throwable $previous = null)
     {
         if ($message == '' && $previous instanceof Throwable) {
             $message = $previous->getMessage();

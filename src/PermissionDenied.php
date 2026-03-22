@@ -40,7 +40,7 @@ class PermissionDenied extends HordeException implements PermissionDeniedThrowab
      * @param integer $code            A numeric error code.
      * @param Throwable $previous   A previous Throwable
      */
-    public function __construct($message = '', $code = 0, Throwable $previous = null)
+    public function __construct($message = '', $code = 0, ?Throwable $previous = null)
     {
         if ($message === '') {
             $message = Translation::t("Permission Denied");

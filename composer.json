@@ -27,9 +27,7 @@
         "php": "^7.4 || ^8",
         "horde/translation": "^3 || dev-FRAMEWORK_6_0"
     },
-    "require-dev": {
-        "horde/test": "^3 || dev-FRAMEWORK_6_0"
-    },
+    "require-dev": {},
     "suggest": {},
     "autoload": {
         "psr-0": {
