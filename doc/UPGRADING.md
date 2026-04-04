@@ -8,7 +8,7 @@ Legacy PSR-0 `lib/` remain for backward compatibility with the old interface tho
 
 ## Requirements
 
-- PHP 8.2 or later
+- PHP 8.1 or later
 
 ## Key Changes
 

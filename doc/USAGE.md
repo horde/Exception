@@ -35,8 +35,12 @@ which base you pick. The question is **which SPL base** fits your error.
 - **`HordeException`** is the catch-all. If none of the specific SPL classes
   fit, use it — but prefer a specific one when one applies.
 
-- **Catch against `HordeThrowable`**, not concrete classes. This catches both
-  PSR-0 and PSR-4 exceptions.
+- Libraries should carefully choose: If they are fairly isolated from Horde ecosystem and have a high
+  chance of usage outside, NOT relying on the Horde exception tree might be attractive and reduce dependency creep.
+
+- **Broad Catch against `HordeThrowable`**: If you need a broad catch, catch against HordeThrowable. This catches both
+  PSR-0 and PSR-4 exceptions. This neatly separates framework internal concerns (we potentially know to handle) from outside failures
+  (which we would have caught somewhere more specific, closer to the root cause if we knew to handle them).
 
 ## What `Wrapped` Is For (and Why You Probably Don't Want It)
 
