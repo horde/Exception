@@ -143,14 +143,35 @@ throw $e;
 
 ### Wrapped Exception
 
-```php
-// Old
-throw new Horde_Exception_Wrapped('Context', $previous);
+> **Note:** `Wrapped` is intended for converting `PEAR_Error` objects, not for
+> general exception chaining. See [USAGE.md](USAGE.md) for guidance on choosing
+> the right base class and why `Wrapped` is usually the wrong choice for
+> component exceptions.
 
-// New
-use Horde\Exception\Wrapped;
-throw new Wrapped('Context', $previous);
+```php
+// Converting PEAR_Error (the intended use)
+throw new Horde_Exception_Wrapped($pearError);
+
+// For exception chaining, use $previous (third arg) on any exception:
+throw new HordeRuntimeException('Context', 0, $previousException);
 ```
+
+### Migrating Component Exceptions Off Wrapped
+
+Many component exceptions historically extend `Horde_Exception_Wrapped`.
+The modern replacement is an SPL-based Horde exception:
+
+```php
+// Old — component exception on Wrapped (loses $previous in lib/ path)
+class Horde_MyComponent_Exception extends Horde_Exception_Wrapped {}
+
+// New — in src/, extend the matching SPL variant
+use Horde\Exception\HordeRuntimeException;
+class MyComponentException extends HordeRuntimeException {}
+```
+
+See [USAGE.md](USAGE.md) for the full use-case table and component exception
+patterns.
 
 ### Not Found Exception
 
