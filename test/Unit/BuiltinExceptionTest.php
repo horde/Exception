@@ -10,7 +10,7 @@ declare(strict_types=1);
  *
  * @category Horde
  * @package  Exception
- * @author   Ralf Lang <lang@b1-systems.de>
+ * @author   Ralf Lang <ralf.lang@ralf-lang.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
 
@@ -46,7 +46,7 @@ use LengthException;
  *
  * @category Horde
  * @package  Exception
- * @author   Ralf Lang <lang@b1-systems.de>
+ * @author   Ralf Lang <ralf.lang@ralf-lang.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
 #[CoversClass(HordeRuntimeException::class)]
@@ -164,7 +164,7 @@ class BuiltinExceptionTest extends TestCase
     public function testToStringContainsExceptionClass(string $hordeClass, string $builtinClass): void
     {
         $exception = new $hordeClass('Test message');
-        $string = (string)$exception;
+        $string = (string) $exception;
         $this->assertStringContainsString($hordeClass, $string);
         $this->assertStringContainsString('Test message', $string);
     }

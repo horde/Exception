@@ -1,17 +1,20 @@
 <?php
+
 /**
  * Copyright 2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
  *
- * @author   Ralf Lang <lang@b1-systems.de>
+ * @author   Ralf Lang <ralf.lang@ralf-lang.de>
  * @category Horde
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
  */
 
 namespace Horde\Exception;
+
+use PEAR_Error;
 
 /**
  * PEAR compatibility shim for legacy code.
@@ -20,11 +23,11 @@ namespace Horde\Exception;
  * to create PEAR_Error instances.
  *
  * Original PEAR source:
- * Copyright 1997-2010 The Authors
+ * Copyright 1997-2026 The Authors
  * Licensed under BSD-2-Clause
  * https://github.com/pear/PEAR
  *
- * @author    Ralf Lang <lang@b1-systems.de>
+ * @author    Ralf Lang <ralf.lang@ralf-lang.de>
  * @category  Horde
  * @copyright 2026 Horde LLC
  * @license   http://www.horde.org/licenses/lgpl21 LGPL-2.1
@@ -69,7 +72,7 @@ class PEAR
             class_exists('PEAR_Error'); // Trigger PSR-0 autoload
         }
 
-        return new \PEAR_Error($message, $code, $mode, $options, $userinfo);
+        return new PEAR_Error($message, $code, $mode, $options, $userinfo);
     }
 
     /**

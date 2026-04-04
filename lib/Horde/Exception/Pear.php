@@ -1,11 +1,14 @@
 <?php
+
 /**
- * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2008-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
  *
- * @author   
+ * @author   Jan Schneider <jan@horde.org>
+ * @author   Chuck Hagenbuch <chuck@horde.org>
+ * @author   Michael Slusarz <slusarz@horde.org>
  * @category Horde
  * @license  http://www.horde.org/licenses/lgpl21 LGPL
  * @package  Exception
@@ -14,7 +17,9 @@
 /**
  * Horde exception class that converts PEAR errors to exceptions.
  *
- * @author    
+ * @author    Jan Schneider <jan@horde.org>
+ * @author    Chuck Hagenbuch <chuck@horde.org>
+ * @author    Michael Slusarz <slusarz@horde.org>
  * @category  Horde
  * @copyright 2008-2017 Horde LLC
  * @license   http://www.horde.org/licenses/lgpl21 LGPL
@@ -54,12 +59,12 @@ class Horde_Exception_Pear extends Horde_Exception
         if (!empty($backtrace)) {
             $pear_error .= 'PEAR backtrace:' . "\n\n";
             foreach ($backtrace as $frame) {
-                $pear_error .=
-                      (isset($frame['class']) ? $frame['class'] : '')
-                    . (isset($frame['type']) ? $frame['type'] : '')
-                    . (isset($frame['function']) ? $frame['function'] : 'unkown') . ' '
-                    . (isset($frame['file']) ? $frame['file'] : 'unkown') . ':'
-                    . (isset($frame['line']) ? $frame['line'] : 'unkown') . "\n";
+                $pear_error
+                      .= ($frame['class'] ?? '')
+                    . ($frame['type'] ?? '')
+                    . ($frame['function'] ?? 'unkown') . ' '
+                    . ($frame['file'] ?? 'unkown') . ':'
+                    . ($frame['line'] ?? 'unkown') . "\n";
             }
         }
         $userinfo = $error->getUserInfo();

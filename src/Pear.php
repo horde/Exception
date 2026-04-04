@@ -1,11 +1,14 @@
 <?php
+
 /**
- * Copyright 2008-2021 Horde LLC (http://www.horde.org/)
+ * Copyright 2008-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
  *
  * @author   Jan Schneider <jan@horde.org>
+ * @author   Chuck Hagenbuch <chuck@horde.org>
+ * @author   Michael Slusarz <slusarz@horde.org>
  * @category Horde
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
@@ -25,6 +28,8 @@ use PEAR_Error;
  * Instead, use a trait that actually unpacks a PEAR_Error into the regular exception constructor.
  *
  * @author    Jan Schneider <jan@horde.org>
+ * @author    Chuck Hagenbuch <chuck@horde.org>
+ * @author    Michael Slusarz <slusarz@horde.org>
  * @category  Horde
  * @copyright 2008-2021 Horde LLC
  * @license   http://www.horde.org/licenses/lgpl21 LGPL
@@ -64,8 +69,8 @@ class Pear extends HordeException
         if (!empty($backtrace)) {
             $pear_error .= 'PEAR backtrace:' . "\n\n";
             foreach ($backtrace as $frame) {
-                $pear_error .=
-                      ($frame['class'] ?? '')
+                $pear_error
+                      .= ($frame['class'] ?? '')
                     . ($frame['type'] ?? '')
                     . ($frame['function'] ?? 'unkown') . ' '
                     . ($frame['file'] ?? 'unkown') . ':'
@@ -77,8 +82,8 @@ class Pear extends HordeException
             $pear_error .= "\n" . 'PEAR user info:' . "\n\n";
             if (is_string($userinfo)) {
                 $pear_error .= $userinfo;
-            // PEAR_Error is pretty legacy
-            // The phpdoc annotation cannot be fully trusted
+                // PEAR_Error is pretty legacy
+                // The phpdoc annotation cannot be fully trusted
             } else {
                 $pear_error .= print_r($userinfo, true);
             }
