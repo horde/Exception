@@ -52,3 +52,7 @@ autoload:
   classmap:
     - compat/
 vendor: horde
+keywords:
+  - framework
+  - spl
+  - pear_error
