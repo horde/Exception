@@ -1,11 +1,14 @@
 <?php
+
 /**
- * Copyright 2008-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2008-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
  *
- * @author   
+ * @author   Jan Schneider <jan@horde.org>
+ * @author   Chuck Hagenbuch <chuck@horde.org>
+ * @author   Michael Slusarz <slusarz@horde.org>
  * @category Horde
  * @license  http://www.horde.org/licenses/lgpl21 LGPL
  * @package  Exception
@@ -15,7 +18,9 @@
  * Horde exception class that can wrap and set its details from PEAR_Error,
  * Exception, and other objects with similar interfaces.
  *
- * @author    
+ * @author    Jan Schneider <jan@horde.org>
+ * @author    Chuck Hagenbuch <chuck@horde.org>
+ * @author    Michael Slusarz <slusarz@horde.org>
  * @category  Horde
  * @copyright 2008-2017 Horde LLC
  * @license   http://www.horde.org/licenses/lgpl21 LGPL
@@ -33,22 +38,22 @@ class Horde_Exception_Wrapped extends Horde_Exception
     public function __construct($message = null, $code = 0)
     {
         $previous = null;
-        if (is_object($message) &&
-            method_exists($message, 'getMessage')) {
-            if (empty($code) &&
-                method_exists($message, 'getCode')) {
-                $code = (int)$message->getCode();
+        if (is_object($message)
+            && method_exists($message, 'getMessage')) {
+            if (empty($code)
+                && method_exists($message, 'getCode')) {
+                $code = (int) $message->getCode();
             }
             if ($message instanceof Exception) {
                 $previous = $message;
             }
-            if (method_exists($message, 'getUserinfo') &&
-                $details = $message->getUserinfo()) {
+            if (method_exists($message, 'getUserinfo')
+                && $details = $message->getUserinfo()) {
                 $this->details = $details;
             } elseif (!empty($message->details)) {
                 $this->details = $message->details;
             }
-            $message = (string)$message->getMessage();
+            $message = (string) $message->getMessage();
         }
 
         parent::__construct($message, $code, $previous);

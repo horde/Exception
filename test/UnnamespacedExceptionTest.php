@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2009-2021 Horde LLC (http://www.horde.org/)
+ * Copyright 2009-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -32,6 +33,7 @@ use PHPUnit\Framework\TestCase;
  * @package  Exception
  * @author   Gunnar Wrobel <wrobel@pardus.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
+ * @coversNothing
  */
 class UnnamespacedExceptionTest extends TestCase
 {
@@ -58,7 +60,7 @@ class UnnamespacedExceptionTest extends TestCase
     public function testMethodTostringYieldsExceptionDescription()
     {
         $e = new Horde_Exception();
-        $this->assertMatchesRegularExpression('/(exception |^)\'?Horde_Exception\'? in/', (string)$e);
+        $this->assertMatchesRegularExpression('/(exception |^)\'?Horde_Exception\'? in/', (string) $e);
     }
 
     /**
@@ -68,8 +70,8 @@ class UnnamespacedExceptionTest extends TestCase
     public function testMethodTostringContainsDescriptionOfPreviousException()
     {
         $e = new Horde_Exception(null, null, new Exception('previous'));
-        $this->assertMatchesRegularExpression('/Next Horde_Exception/', (string)$e);
-        $this->assertMatchesRegularExpression('/Exception: previous/', (string)$e);
+        $this->assertMatchesRegularExpression('/Next Horde_Exception/', (string) $e);
+        $this->assertMatchesRegularExpression('/Exception: previous/', (string) $e);
     }
 
     // NotFound Exception Testing

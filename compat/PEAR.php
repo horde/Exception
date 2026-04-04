@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PEAR compatibility class for legacy code.
  *
@@ -9,7 +10,7 @@
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
  *
- * @author   Ralf Lang <lang@b1-systems.de>
+ * @author   Ralf Lang <ralf.lang@ralf-lang.de>
  * @category Horde
  * @license  http://www.horde.org/licenses/lgpl21 LGPL-2.1
  * @package  Exception
@@ -21,6 +22,4 @@
  *
  * Extends Horde\Exception\PEAR which will be autoloaded by PSR-4.
  */
-class PEAR extends Horde\Exception\PEAR
-{
-}
+class PEAR extends Horde\Exception\PEAR {}

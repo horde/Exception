@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Stub replacement for PEAR Errors
  *

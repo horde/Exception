@@ -11,7 +11,7 @@ declare(strict_types=1);
  * @category Horde
  * @package  Exception
  * @author   Gunnar Wrobel <wrobel@pardus.de>
- * @author   Ralf Lang <lang@b1-systems.de>
+ * @author   Ralf Lang <ralf.lang@ralf-lang.de>
  * @license  http://www.horde.org/licenses/lgpl21 LGPL 2.1
  */
 
@@ -68,7 +68,7 @@ class ExceptionTest extends TestCase
     public function testMethodTostringYieldsExceptionDescription(): void
     {
         $e = new HordeException();
-        $this->assertStringContainsString('Horde\Exception\HordeException', (string)$e);
+        $this->assertStringContainsString('Horde\Exception\HordeException', (string) $e);
     }
 
     /**
@@ -78,8 +78,8 @@ class ExceptionTest extends TestCase
     public function testMethodTostringContainsDescriptionOfPreviousException(): void
     {
         $e = new HordeException('', 0, new Exception('previous'));
-        $this->assertStringContainsString('Next Horde\Exception\HordeException', (string)$e);
-        $this->assertMatchesRegularExpression('/Exception: previous/', (string)$e);
+        $this->assertStringContainsString('Next Horde\Exception\HordeException', (string) $e);
+        $this->assertMatchesRegularExpression('/Exception: previous/', (string) $e);
     }
 
     // NotFound Exception Testing
