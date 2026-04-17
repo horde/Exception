@@ -21,7 +21,12 @@
             "role": "developer"
         }
     ],
-    "time": "2026-03-22",
+    "keywords": [
+        "framework",
+        "spl",
+        "pear_error"
+    ],
+    "time": "2026-04-17",
     "repositories": [],
     "require": {
         "php": "^7.4 || ^8",
