@@ -9,29 +9,26 @@ list: dev
 type: library
 homepage: https://www.horde.org/libraries/Horde_Exception
 authors:
-  -
-    name: Jan Schneider
+  - name: Jan Schneider
     user: jan
     email: jan@horde.org
     active: true
     role: lead
-  -
-    name: Chuck Hagenbuch
+  - name: Chuck Hagenbuch
     user: chuck
     email: chuck@horde.org
     active: false
     role: lead
-  -
-    name: Michael Slusarz
+  - name: Michael Slusarz
     user: slusarz
     email: slusarz@horde.org
     active: false
     role: developer
 version:
-  release: 3.0.0
+  release: 3.0.1
   api: 3.0.0alpha1
 state:
-  release:
+  release: ''
   api: alpha
 license:
   identifier: LGPL-2.1-only
