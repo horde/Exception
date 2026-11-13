@@ -26,7 +26,7 @@
         "spl",
         "pear_error"
     ],
-    "time": "2026-06-25",
+    "time": "2026-11-13",
     "repositories": [],
     "require": {
         "php": "^7.4 || ^8",
